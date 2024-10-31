@@ -2,8 +2,7 @@
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
-	height: 300px;
-	background: #1F2937;
+	height: 200px;
 }
  
 
@@ -19,8 +18,9 @@
 	display: flex;
 	flex: 1 1 0%;
 	justify-content: center;
-	margin-left: 15%;
-	margin-right: 15%;
+	margin-left: 20%;
+	margin-right: 20%;
+	align-items: center;
 
 }
 
@@ -64,6 +64,7 @@
 	flex: 1 1 0%;
 	text-align: center;
 	font-size: 50px;
+	color: white;
 }
 
 .main_shop_all {
@@ -71,6 +72,7 @@
 	font-size: 18px;
 	border: 2px solid #ffffff;
 	padding: 10px 20px;
+	color: white;
 }
 
 .category_container {
@@ -95,16 +97,15 @@
 	margin-left: 10%;
 	margin-right: 10%;
 	justify-items: center;
-	align-items: center;
 }
 
 .images {
 	text-align: center;
 	height: 450px;
-	width: 95%;
+	width: 100%;
 	max-width: 450px;
 	max-height: 450px;
-	filter: brightness(50%);
+	filter: brightness(70%);
 }
 
 .image_1 {
@@ -124,10 +125,11 @@
 .image_text {
 	font-size: 16px;
 	text-align: center;
-	border: 2px solid black;
+	border: 2px solid white;
 	font-weight: bold;
 	padding: 10px 20px;
 	z-index: 1;
+	color: white;
 }
 
 .text_1 {
@@ -147,7 +149,7 @@
 
 
 
-.intention_container {
+.intention_title_container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -165,3 +167,66 @@
 	flex: 1 1 0%;
 	font-size: 16px;
 }
+
+.intention_container {
+	display: flex;
+	justify-content: center;
+	height: 500px;
+	background: #fff6e5;
+}
+
+.left_side_intention {
+	flex: 1 1 0%;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	background: #fbf8f3;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	max-width: 450px;
+	max-height: 450px;
+}
+
+.intention_type {
+	flex: 0.5 1 0%;
+	font-size: 36px;
+	margin-top: 3%;
+	margin-left: 3%;
+}
+
+.intention_description {
+	flex: 1 1 0%;
+	margin-left: 3%;
+}
+
+.shop_energy_container {
+	flex: 1 1 0%;
+	align-items: start;
+	display: flex;
+	margin-left: 3%;
+}
+.shop_energy {
+	font-weight: 700;
+	border: 2px solid black;
+	padding: 10px 20px;
+}
+
+.intention_images_container {
+	display: flex;
+	flex: 1 1 0%;
+	background: #fedc98;
+	align-items: center;
+	justify-content: center;
+}
+
+.intention_images {
+	height: 85%;
+	width: 75%;
+}
+
+
+
+
+
