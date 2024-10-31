@@ -1,3 +1,10 @@
+
+
+body {
+	margin: 0;
+}
+
+
 .header_container {
 	display: flex;
 	justify-content: center;
@@ -163,7 +170,7 @@
 	font-size: 32px;
 }
 
-.intention_description {
+.intention_assurance {
 	flex: 1 1 0%;
 	font-size: 16px;
 }
@@ -201,19 +208,19 @@
 	margin-left: 3%;
 }
 
-.shop_energy_container {
+.shop_intention_container {
 	flex: 1 1 0%;
 	align-items: start;
 	display: flex;
 	margin-left: 3%;
 }
-.shop_energy {
+.shop_intention {
 	font-weight: 700;
 	border: 2px solid black;
 	padding: 10px 20px;
 }
 
-.intention_images_container {
+.intention_image_container {
 	display: flex;
 	flex: 1 1 0%;
 	background: #fedc98;
@@ -221,7 +228,7 @@
 	justify-content: center;
 }
 
-.intention_images {
+.intention_image {
 	height: 85%;
 	width: 75%;
 }
