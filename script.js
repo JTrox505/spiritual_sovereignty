@@ -1,5 +1,134 @@
 
 
+// this function operates the slideshow within the website.
+function slideShow(nextSlide=false, previousSlide=false) {
+	//I have multiple of these arrays so that I can easily iterate through each slideshow component easier.
+	let intentionCategories = [
+		ConfidenceAndAcceptance, 
+		EnergyAndVitality, 
+		BalanceAndWellness, 
+		IntuitionAndSpirituality, 
+		LoveAndHappiness, 
+		ManifestationAndAbundance, 
+		PeaceAndHarmony, 
+		PregnancyAndIntimacy, 
+		ProtectionAndGrounding
+	];
+
+
+//I get the animation of the slide to work by overlapping all the content, 
+//this function makes sure the previous content goes back to being hidden after the animation happens.
+	function fadeAwaySlide() {
+		for(let i=0; i<intentionTypeDivs.length; i++) {
+			if(intentionTypeDivs[i] !== intentionTypeDivs[slideNumber]) {
+				intentionTypeDivs[i].style.opacity = 0;
+			}
+			if(intentionDescriptionDivs[i] !== intentionDescriptionDivs[slideNumber]) {
+				intentionDescriptionDivs[i].style.opacity = 0;
+			}
+			if(intentionShopDivs[i] !== intentionShopDivs[slideNumber]) {
+				intentionShopDivs[i].style.opacity = 0;
+			}
+			if(intentionImageDivs[i] !== intentionImageDivs[slideNumber]) {
+				intentionImageDivs[i].style.opacity =0;
+			}
+		}
+	}
+	
+	function nextSlideNumber() {
+		slideNumber++;
+		if (slideNumber >= intentionCategories.length) {
+			slideNumber = 0;
+		}
+	}
+
+	function previousSlideNumber() {
+		slideNumber--;
+		if (slideNumber < 0) {
+			slideNumber = intentionCategories.length-1;
+		}
+	}
+// Only one of these will be true at a time if a slideshow arraw is pressed. 
+	if(nextSlide===true) {
+		nextSlideNumber();
+	}
+	if(previousSlide===true) {
+		previousSlideNumber();
+	}
+
+
+	let intentionTypeDivs = [
+		CONFIDENCE_INTENTION_TYPE,
+		ENERGY_INTENTION_TYPE,
+		BALANCE_INTENTION_TYPE,
+		INTUITION_INTENTION_TYPE,
+		LOVE_INTENTION_TYPE,
+		MANIFESTATION_INTENTION_TYPE,
+		PEACE_INTENTION_TYPE,
+		PREGNANCY_INTENTION_TYPE,
+		PROTECTION_INTENTION_TYPE
+	];
+
+	let intentionDescriptionDivs = [
+		CONFIDENCE_INTENTION_DESCRIPTION,
+		ENERGY_INTENTION_DESCRIPTION,
+		BALANCE_INTENTION_DESCRIPTION,
+		INTUITION_INTENTION_DESCRIPTION,
+		LOVE_INTENTION_DESCRIPTION,
+		MANIFESTATION_INTENTION_DESCRIPTION,
+		PEACE_INTENTION_DESCRIPTION,
+		PREGNANCY_INTENTION_DESCRIPTION,
+		PROTECTION_INTENTION_DESCRIPTION
+	];
+
+	let intentionShopDivs = [
+		CONFIDENCE_INTENTION_SHOP,
+		ENERGY_INTENTION_SHOP,
+		BALANCE_INTENTION_SHOP,
+		INTUITION_INTENTION_SHOP,
+		LOVE_INTENTION_SHOP,
+		MANIFESTATION_INTENTION_SHOP,
+		PEACE_INTENTION_SHOP,
+		PREGNANCY_INTENTION_SHOP,
+		PROTECTION_INTENTION_SHOP
+	];
+
+	let intentionImageDivs = [
+		CONFIDENCE_INTENTION_IMAGE,
+		ENERGY_INTENTION_IMAGE,
+		BALANCE_INTENTION_IMAGE,
+		INTUITION_INTENTION_IMAGE,
+		LOVE_INTENTION_IMAGE,
+		MANIFESTATION_INTENTION_IMAGE,
+		PEACE_INTENTION_IMAGE,
+		PREGNANCY_INTENTION_IMAGE,
+		PROTECTION_INTENTION_IMAGE
+	];
+
+
+
+	intentionTypeDivs[slideNumber].style.opacity = 1;
+	intentionDescriptionDivs[slideNumber].style.opacity = 1;
+	intentionShopDivs[slideNumber].style.opacity = 1;
+	intentionImageDivs[slideNumber].style.opacity = 1;
+
+	//Since these are style changes and not content changes, I didn't have to overlap anything here but instead just add transitions to the CSS.
+	INTENTION_INFO_CONTAINER.style.background = intentionCategories[slideNumber].leftSideBackground;
+	INTENTION_CONTAINER.style.background = intentionCategories[slideNumber].mainBackground;
+	INTENTION_IMAGE_CONTAINER.style.background = intentionCategories[slideNumber].imageBackground;
+
+	//make sure to do this after the current content is already displayed to make for a smoother looking animation.
+	fadeAwaySlide();
+}
+
+
+
+
+
+
+
+
+//I added all of the slideshow content in JS rather than in the HTML because I thought it looked cleaner.
 let ConfidenceAndAcceptance = {
 	type: "Confidence And Acceptance",
 	description: "You are the most incredible version of yourself, and this collection of crystals will assist you in accepting, honoring, and loving yourself just as you are. Use these to help you unravel all of those blocks and barriers that have shielded you away from being your most authentic self.",
@@ -91,61 +220,54 @@ let ProtectionAndGrounding = {
 };
 
 
+//need all of these variables to be able to change the HTML and CSS of each property. 
+const CONFIDENCE_INTENTION_TYPE = document.querySelector(".confidence-intention-type");
+const ENERGY_INTENTION_TYPE = document.querySelector(".energy-intention-type");
+const BALANCE_INTENTION_TYPE = document.querySelector(".balance-intention-type");
+const INTUITION_INTENTION_TYPE = document.querySelector(".intuition-intention-type");
+const LOVE_INTENTION_TYPE = document.querySelector(".love-intention-type");
+const MANIFESTATION_INTENTION_TYPE = document.querySelector(".manifestation-intention-type");
+const PEACE_INTENTION_TYPE = document.querySelector(".peace-intention-type");
+const PREGNANCY_INTENTION_TYPE = document.querySelector(".pregnancy-intention-type");
+const PROTECTION_INTENTION_TYPE = document.querySelector(".protection-intention-type");
 
+const CONFIDENCE_INTENTION_DESCRIPTION = document.querySelector(".confidence-intention-description"); 
+const ENERGY_INTENTION_DESCRIPTION = document.querySelector(".energy-intention-description"); 
+const BALANCE_INTENTION_DESCRIPTION = document.querySelector(".balance-intention-description"); 
+const INTUITION_INTENTION_DESCRIPTION = document.querySelector(".intuition-intention-description"); 
+const LOVE_INTENTION_DESCRIPTION = document.querySelector(".love-intention-description"); 
+const MANIFESTATION_INTENTION_DESCRIPTION = document.querySelector(".manifestation-intention-description"); 
+const PEACE_INTENTION_DESCRIPTION = document.querySelector(".peace-intention-description"); 
+const PREGNANCY_INTENTION_DESCRIPTION = document.querySelector(".pregnancy-intention-description"); 
+const PROTECTION_INTENTION_DESCRIPTION = document.querySelector(".protection-intention-description"); 
 
+const CONFIDENCE_INTENTION_SHOP = document.querySelector(".confidence-intention-shop");
+const ENERGY_INTENTION_SHOP = document.querySelector(".energy-intention-shop");
+const BALANCE_INTENTION_SHOP = document.querySelector(".balance-intention-shop");
+const INTUITION_INTENTION_SHOP = document.querySelector(".intuition-intention-shop");
+const LOVE_INTENTION_SHOP = document.querySelector(".love-intention-shop");
+const MANIFESTATION_INTENTION_SHOP = document.querySelector(".manifestation-intention-shop");
+const PEACE_INTENTION_SHOP = document.querySelector(".peace-intention-shop");
+const PREGNANCY_INTENTION_SHOP = document.querySelector(".pregnancy-intention-shop");
+const PROTECTION_INTENTION_SHOP = document.querySelector(".protection-intention-shop");
 
-const CONFIDENCE_INTENTION_TYPE = document.querySelector(".confidence_intention_type");
-const ENERGY_INTENTION_TYPE = document.querySelector(".energy_intention_type");
-const BALANCE_INTENTION_TYPE = document.querySelector(".balance_intention_type");
-const INTUITION_INTENTION_TYPE = document.querySelector(".intuition_intention_type");
-const LOVE_INTENTION_TYPE = document.querySelector(".love_intention_type");
-const MANIFESTATION_INTENTION_TYPE = document.querySelector(".manifestation_intention_type");
-const PEACE_INTENTION_TYPE = document.querySelector(".peace_intention_type");
-const PREGNANCY_INTENTION_TYPE = document.querySelector(".pregnancy_intention_type");
-const PROTECTION_INTENTION_TYPE = document.querySelector(".protection_intention_type");
+const CONFIDENCE_INTENTION_IMAGE = document.querySelector(".confidence-intention-image");
+const ENERGY_INTENTION_IMAGE = document.querySelector(".energy-intention-image");
+const BALANCE_INTENTION_IMAGE = document.querySelector(".balance-intention-image");
+const INTUITION_INTENTION_IMAGE = document.querySelector(".intuition-intention-image");
+const LOVE_INTENTION_IMAGE = document.querySelector(".love-intention-image");
+const MANIFESTATION_INTENTION_IMAGE = document.querySelector(".manifestation-intention-image");
+const PEACE_INTENTION_IMAGE = document.querySelector(".peace-intention-image");
+const PREGNANCY_INTENTION_IMAGE = document.querySelector(".pregnancy-intention-image");
+const PROTECTION_INTENTION_IMAGE = document.querySelector(".protection-intention-image");
 
-const CONFIDENCE_INTENTION_DESCRIPTION = document.querySelector(".confidence_intention_description"); 
-const ENERGY_INTENTION_DESCRIPTION = document.querySelector(".energy_intention_description"); 
-const BALANCE_INTENTION_DESCRIPTION = document.querySelector(".balance_intention_description"); 
-const INTUITION_INTENTION_DESCRIPTION = document.querySelector(".intuition_intention_description"); 
-const LOVE_INTENTION_DESCRIPTION = document.querySelector(".love_intention_description"); 
-const MANIFESTATION_INTENTION_DESCRIPTION = document.querySelector(".manifestation_intention_description"); 
-const PEACE_INTENTION_DESCRIPTION = document.querySelector(".peace_intention_description"); 
-const PREGNANCY_INTENTION_DESCRIPTION = document.querySelector(".pregnancy_intention_description"); 
-const PROTECTION_INTENTION_DESCRIPTION = document.querySelector(".protection_intention_description"); 
+const INTENTION_INFO_CONTAINER = document.querySelector(".intention-info-container");
+const INTENTION_CONTAINER = document.querySelector(".intention-container");
+const INTENTION_IMAGE_CONTAINER = document.querySelector(".intention-image-container");
+const INTENTION_IMAGE = document.querySelector(".intention-image");
 
+const INTENTION_DESCRIPTION_CONTAINER = document.querySelector(".intention-description-container");
 
-const CONFIDENCE_INTENTION_SHOP = document.querySelector(".confidence_intention_shop");
-const ENERGY_INTENTION_SHOP = document.querySelector(".energy_intention_shop");
-const BALANCE_INTENTION_SHOP = document.querySelector(".balance_intention_shop");
-const INTUITION_INTENTION_SHOP = document.querySelector(".intuition_intention_shop");
-const LOVE_INTENTION_SHOP = document.querySelector(".love_intention_shop");
-const MANIFESTATION_INTENTION_SHOP = document.querySelector(".manifestation_intention_shop");
-const PEACE_INTENTION_SHOP = document.querySelector(".peace_intention_shop");
-const PREGNANCY_INTENTION_SHOP = document.querySelector(".pregnancy_intention_shop");
-const PROTECTION_INTENTION_SHOP = document.querySelector(".protection_intention_shop");
-
-
-
-const CONFIDENCE_INTENTION_IMAGE = document.querySelector(".confidence_intention_image");
-const ENERGY_INTENTION_IMAGE = document.querySelector(".energy_intention_image");
-const BALANCE_INTENTION_IMAGE = document.querySelector(".balance_intention_image");
-const INTUITION_INTENTION_IMAGE = document.querySelector(".intuition_intention_image");
-const LOVE_INTENTION_IMAGE = document.querySelector(".love_intention_image");
-const MANIFESTATION_INTENTION_IMAGE = document.querySelector(".manifestation_intention_image");
-const PEACE_INTENTION_IMAGE = document.querySelector(".peace_intention_image");
-const PREGNANCY_INTENTION_IMAGE = document.querySelector(".pregnancy_intention_image");
-const PROTECTION_INTENTION_IMAGE = document.querySelector(".protection_intention_image");
-
-
-
-
-const LEFT_SIDE_INTENTION = document.querySelector(".left_side_intention");
-const INTENTION_CONTAINER = document.querySelector(".intention_container");
-const INTENTION_IMAGE_CONTAINER = document.querySelector(".intention_image_container");
-const INTENTION_IMAGE = document.querySelector(".intention_image");
-
-const INTENTION_DESCRIPTION_CONTAINER = document.querySelector(".intention_description_container");
 
 
 CONFIDENCE_INTENTION_TYPE.textContent = ConfidenceAndAcceptance.type;
@@ -157,7 +279,6 @@ MANIFESTATION_INTENTION_TYPE.textContent = ManifestationAndAbundance.type;
 PEACE_INTENTION_TYPE.textContent = PeaceAndHarmony.type;
 PREGNANCY_INTENTION_TYPE.textContent = PregnancyAndIntimacy.type;
 PROTECTION_INTENTION_TYPE.textContent = ProtectionAndGrounding.type;
-
 
 CONFIDENCE_INTENTION_DESCRIPTION.textContent = ConfidenceAndAcceptance.description;
 ENERGY_INTENTION_DESCRIPTION.textContent = EnergyAndVitality.description;
@@ -179,7 +300,6 @@ PEACE_INTENTION_SHOP.textContent = PeaceAndHarmony.shop;
 PREGNANCY_INTENTION_SHOP.textContent = PregnancyAndIntimacy.shop;
 PROTECTION_INTENTION_SHOP.textContent = ProtectionAndGrounding.shop;
 
-
 CONFIDENCE_INTENTION_IMAGE.src = ConfidenceAndAcceptance.image;
 ENERGY_INTENTION_IMAGE.src = EnergyAndVitality.image;
 BALANCE_INTENTION_IMAGE.src = BalanceAndWellness.image;
@@ -192,112 +312,12 @@ PROTECTION_INTENTION_IMAGE.src = ProtectionAndGrounding.image;
 
 
 
-
-let intentionCycle = 0;
-slideshow();
+let slideNumber = 0;
+slideShow();
 
 INTENTION_DESCRIPTION_CONTAINER.addEventListener("click", ()=> {
-	slideshow();
+	slideShow(true);
 });
-
-function slideshow() {
-	var intentionCategories = [
-		ConfidenceAndAcceptance, 
-		EnergyAndVitality, 
-		BalanceAndWellness, 
-		IntuitionAndSpirituality, 
-		LoveAndHappiness, 
-		ManifestationAndAbundance, 
-		PeaceAndHarmony, 
-		PregnancyAndIntimacy, 
-		ProtectionAndGrounding
-	];
-
-	var intentionTypeDivs = [
-		CONFIDENCE_INTENTION_TYPE,
-		ENERGY_INTENTION_TYPE,
-		BALANCE_INTENTION_TYPE,
-		INTUITION_INTENTION_TYPE,
-		LOVE_INTENTION_TYPE,
-		MANIFESTATION_INTENTION_TYPE,
-		PEACE_INTENTION_TYPE,
-		PREGNANCY_INTENTION_TYPE,
-		PROTECTION_INTENTION_TYPE
-	];
-
-	var intentionDescriptionDivs = [
-		CONFIDENCE_INTENTION_DESCRIPTION,
-		ENERGY_INTENTION_DESCRIPTION,
-		BALANCE_INTENTION_DESCRIPTION,
-		INTUITION_INTENTION_DESCRIPTION,
-		LOVE_INTENTION_DESCRIPTION,
-		MANIFESTATION_INTENTION_DESCRIPTION,
-		PEACE_INTENTION_DESCRIPTION,
-		PREGNANCY_INTENTION_DESCRIPTION,
-		PROTECTION_INTENTION_DESCRIPTION
-	];
-
-	var intentionShopDivs = [
-		CONFIDENCE_INTENTION_SHOP,
-		ENERGY_INTENTION_SHOP,
-		BALANCE_INTENTION_SHOP,
-		INTUITION_INTENTION_SHOP,
-		LOVE_INTENTION_SHOP,
-		MANIFESTATION_INTENTION_SHOP,
-		PEACE_INTENTION_SHOP,
-		PREGNANCY_INTENTION_SHOP,
-		PROTECTION_INTENTION_SHOP
-	];
-
-
-	var intentionImageDivs = [
-		CONFIDENCE_INTENTION_IMAGE,
-		ENERGY_INTENTION_IMAGE,
-		BALANCE_INTENTION_IMAGE,
-		INTUITION_INTENTION_IMAGE,
-		LOVE_INTENTION_IMAGE,
-		MANIFESTATION_INTENTION_IMAGE,
-		PEACE_INTENTION_IMAGE,
-		PREGNANCY_INTENTION_IMAGE,
-		PROTECTION_INTENTION_IMAGE
-	];
-
-
-
-
-
-	intentionTypeDivs[intentionCycle].style.opacity = 1;
-	intentionDescriptionDivs[intentionCycle].style.opacity = 1;
-	intentionShopDivs[intentionCycle].style.opacity = 1;
-	intentionImageDivs[intentionCycle].style.opacity = 1;
-
-
-	LEFT_SIDE_INTENTION.style.background = intentionCategories[intentionCycle].leftSideBackground;
-	INTENTION_CONTAINER.style.background = intentionCategories[intentionCycle].mainBackground;
-	INTENTION_IMAGE_CONTAINER.style.background = intentionCategories[intentionCycle].imageBackground;
-
-	for(let i=0; i<intentionTypeDivs.length; i++) {
-		if(intentionTypeDivs[i] !== intentionTypeDivs[intentionCycle]) {
-			intentionTypeDivs[i].style.opacity = 0;
-		}
-		if(intentionDescriptionDivs[i] !== intentionDescriptionDivs[intentionCycle]) {
-			intentionDescriptionDivs[i].style.opacity = 0;
-		}
-		if(intentionShopDivs[i] !== intentionShopDivs[intentionCycle]) {
-			intentionShopDivs[i].style.opacity = 0;
-		}
-		if(intentionImageDivs[i] !== intentionImageDivs[intentionCycle]) {
-			intentionImageDivs[i].style.opacity =0;
-		}
-	}
-
-
-
-	intentionCycle += 1;
-	if (intentionCycle >= intentionCategories.length) {
-		intentionCycle = 0;
-	}
-}
 
 
 
