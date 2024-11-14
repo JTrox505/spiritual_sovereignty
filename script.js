@@ -266,7 +266,8 @@ const INTENTION_CONTAINER = document.querySelector(".intention-container");
 const INTENTION_IMAGE_CONTAINER = document.querySelector(".intention-image-container");
 const INTENTION_IMAGE = document.querySelector(".intention-image");
 
-const INTENTION_DESCRIPTION_CONTAINER = document.querySelector(".intention-description-container");
+const LEFT_ARROW = document.querySelector(".left-arrow-container");
+const RIGHT_ARROW = document.querySelector(".right-arrow-container");
 
 
 
@@ -315,9 +316,12 @@ PROTECTION_INTENTION_IMAGE.src = ProtectionAndGrounding.image;
 let slideNumber = 0;
 slideShow();
 
-INTENTION_DESCRIPTION_CONTAINER.addEventListener("click", ()=> {
-	slideShow(true);
+LEFT_ARROW.addEventListener("click", ()=> {
+	slideShow(false, true);
 });
 
+RIGHT_ARROW.addEventListener("click", ()=> {
+	slideShow(true);
+});
 
 

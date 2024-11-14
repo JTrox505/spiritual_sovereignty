@@ -231,7 +231,68 @@ body {
 	opacity: 0;
 }
 
+.left-arrow-container {
+	display: inline-block;
+	position: absolute;
+	margin-top: 250px;
+	left: 1rem;
+	margin-left: 1%;
+	width: 45px;
+	height: 45px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: white;
+	border-radius: 50%;
+	transition: 800ms;
+	cursor: pointer;
+}
+.left-arrow-container:hover {
+	background-color: #e7e7e7;
+}
+.left-arrow-container:active {
+	opacity: 40%;
+	transition: 0s;
+}
+.left-arrow {
+	border: solid black;
+	border-width: 0 2px 2px 0;
+	transform: rotate(135deg);
+	height: 10px;
+	width: 10px;
+}
 
+
+.right-arrow-container {
+	display: inline-block;
+	position: absolute;
+	margin-top: 250px;
+	right: 1rem;
+	margin-right: 1%;
+	width: 45px;
+	height: 45px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: white;
+	border-radius: 50%;
+	transition: 800ms;
+	cursor: pointer;
+}
+.right-arrow-container:hover {
+	background-color: #e7e7e7;
+}
+.right-arrow-container:active {
+	opacity: 40%;
+	transition: 0s;
+}
+.right-arrow {
+	border: solid black;
+	border-width: 0 2px 2px 0;
+	transform: rotate(-45deg);
+	height: 10px;
+	width: 10px;
+}
 
 
 
