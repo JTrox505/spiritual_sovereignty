@@ -1,5 +1,6 @@
 body {
 	margin: 0;
+	font-family: "IBM plex sans", sans-serif;
 }
 
 
@@ -141,11 +142,11 @@ body {
 .intention-title {
 	flex: 1 1 0%;
 	font-size: 32px;
+	font-weight: 500;
 }
 
 .intention-assurance {
 	flex: 1.5 1 0%;
-	font-size: 18px;
 }
 
 
@@ -185,6 +186,7 @@ body {
 	opacity: 0;
 	grid-row-start: 1;
 	grid-column-start: 1;
+	font-weight: 500;
 }
 
 .intention-description-container {
@@ -296,3 +298,67 @@ body {
 
 
 
+.footer-container {
+	height: 400px;
+	display: flex;
+	margin-top: 60px;
+	margin-bottom: 30px;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+.about-container {
+	display: flex;
+	flex: 1 1 0%;
+	flex-direction: column;
+}
+.about-title {
+	flex: 0 1 0%;
+	font-size: 18px;
+	font-weight: 500;
+	margin-left: 45px;
+}
+
+.about-image-container {
+	flex: 0 1 0%;
+}
+.about-image {
+	height: 175px;
+	width: 175px;
+}
+.about-description {
+	flex: 1 1 0%;
+	margin-left: 45px;
+}
+
+.shop-container {
+	display: flex;
+	flex: 0.5 1 0%;
+	flex-direction: column;
+	margin-bottom: 5%;
+	margin-left: 5%;
+}
+.shop-list {
+	flex: 1 1 0%;
+}
+.shop {
+	font-weight: 500;
+	font-size: 18px;
+	flex: 1.25 1 0%;
+}
+
+.getting-in-touch-container {
+	display: flex;
+	flex: 1 1 0%;
+	flex-direction: column;
+	margin-bottom: 10%;
+}
+.getting-in-touch {
+	flex: 1 1 0%;
+	text-decoration: underline;
+}
+.getting-in-touch-title {
+	font-weight: 500;
+	font-size: 18px;
+	flex: 1.125 1 0%;
+	text-decoration: none;
+}
