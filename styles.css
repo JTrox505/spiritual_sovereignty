@@ -318,6 +318,16 @@ body {
 
 
 
+.footer-spacer {
+	height: 1px;
+	background-color: grey;
+	margin-top: 75px;
+	width: 90%;
+	margin-inline: auto;
+}
+
+
+
 .footer-container {
 	height: 400px;
 	display: flex;
@@ -383,4 +393,18 @@ body {
 	font-size: 18px;
 	flex: 1.125 1 0%;
 	text-decoration: none;
+}
+
+
+
+.copyright-container {
+	display: flex;
+	height: 75px;
+	background-color: #838e8e;
+	align-items: center;
+}
+.copyright {
+	text-align: center;
+	flex: 1 1 0%;
+	color: white;
 }
