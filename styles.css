@@ -81,6 +81,10 @@ body {
 	padding: 10px 20px;
 	color: white;
 }
+.main-shop-all a {
+	color: inherit;
+	text-decoration: none;
+}
 
 
 
