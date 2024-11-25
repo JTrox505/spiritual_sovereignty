@@ -1,0 +1,80 @@
+body {
+	margin: 0;
+	font-family: "IBM plex sans", sans-serif;
+}
+
+
+
+.header-container {
+	height: 175px;
+	display: flex;
+}
+
+.header-banner-container {
+	flex: 0.4 1 0%;
+	display: flex;
+	align-items: center;
+	justify-content: end;
+}
+
+.header-logo-container {
+	flex: 0.5 1 0%;
+	display: flex;
+	justify-content: end;
+}
+.header-logo {
+	height: 100px;
+	width: 100px;
+}
+
+.header-title-container {
+	display: flex;
+	flex: 1 1 0%;
+}
+.header-title {
+	font-size: 32px;
+}
+
+.search-bar-container {
+	flex: 1 1 0%;
+	display: flex;
+	align-items: center;
+}
+.search-bar {
+	width: 100%;
+	max-width: 900px;
+	background: #f2f4f6;
+	border-radius: 24px;
+	margin-left: 20px;
+	margin-right: 20px;
+	padding: 0.75rem 0 0.75rem 1.5rem;
+	display: flex;
+}
+.search {
+	border: none;
+	font-size: 16px;
+	flex: 1 1 0%;
+	background: inherit;
+}
+.search:focus {
+	outline: none;
+}
+.search:focus::placeholder {
+	opacity: 0.5;
+}
+
+.search-button {
+	margin-right: 30px;
+	color: #788087;
+}
+.search-button:hover {
+	opacity: 0.5;
+	cursor: pointer;
+	transition: 500ms;
+}
+
+
+
+
+
+
