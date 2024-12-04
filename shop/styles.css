@@ -74,7 +74,61 @@ body {
 }
 
 
+.body-container {
+	display: flex;
+	max-width: 1400px;
+	padding: 24px 32px 0px;
+	width: 100%;
+	margin: auto;
+}
+.filter-container {
+	display: flex;
+	flex: 0 1 240px;
+	height: 2000px;
+	flex-direction: column;
+	margin-right: 48px;
+}
+.filter-container * {
+	font-size: 14px;
+	font-weight: bold;
+	color: #3a3a3a;
+	border-bottom: 1px solid #e3e3e3;
+	padding: 15px 0;
+}
+.filter-container *::after {
+	font-family: "FontAwesome";
+	content: "\f107";
+	margin-left: 5px;
+}
 
+.title-container {
+	display: flex;
+	flex-direction: column;
+	height: 100px;
+	flex: 1 1 0%;
+}
+.title {
+	font-size: 36px;
+	flex: 1 1 0%;
+	font-weight: 600;
+}
 
+.sort-container {
+	display: flex;
+	flex: 1 1 0%;
+	align-items: end;
+}
+.item-count {
+	flex: 1 1 0%;
+}
+
+.sort-button {
+	flex: 1 1 0%;
+	text-align: end;
+}
+
+.down-arrow {
+	margin-left: 16px;
+}
 
 
