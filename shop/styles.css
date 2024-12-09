@@ -8,6 +8,9 @@ body {
 .header-container {
 	height: 175px;
 	display: flex;
+	position: sticky;
+	top: 0;
+	background: white;
 }
 
 .header-banner-container {
@@ -122,13 +125,44 @@ body {
 	flex: 1 1 0%;
 }
 
+.sort-by-container {
+	display: flex;
+	position: relative;
+	padding-right: 60px;
+}
 .sort-button {
-	flex: 1 1 0%;
-	text-align: end;
+	list-style-type: none;
+	background: none;
+	border: none;
+	text-decoration: none;
+	font-family: inherit;
+	font-size: inherit;
+	cursor: pointer;
+	padding: 0;
+}
+.sort-button::after {
+	font-family: "FontAwesome";
+	content: "\f107";
+	padding-left: 16px;
 }
 
-.down-arrow {
-	margin-left: 16px;
+.sort-content {
+	position: absolute;
+	top: calc(100% + .25rem);
+	list-style-type: none;
+	background-color: white;
+	padding: .75rem;
+	border-radius: .25rem;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
+	opacity: 0;
+	pointer-events: none;
+	transform: translateY(-10px);
+	transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+
 }
 
-
+.sort-by-container.active > .sort-button + .sort-content {
+	opacity: 1;
+	transform: translateY(0);
+	pointer-events: auto;
+}
