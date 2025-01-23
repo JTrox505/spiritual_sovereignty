@@ -103,17 +103,43 @@ body {
 	content: "\f107";
 	margin-left: 5px;
 }
+
+.filter-container.expanded > div > :first-child::after {
+	content: "\f106";
+}
+
 .collection-text {
 	transition: all .5s ease;
 	overflow: hidden;
 	max-height: 0;
 }
-.collection-container.expanded > .collection-text {
-
-}
 .collection-text li {
 	list-style-type: none;
+	font-weight: normal;
+	margin-top: 5px;
 }
+.collection-text li label input[type="checkbox"] {
+	display: none;
+}
+.collection-text li label span {
+	height: 12px;
+	width: 12px;
+	border: 1px solid grey;
+	display: inline-block;
+	position: relative;
+	margin-left: 5px;
+	border-radius: 15%;
+	margin-right: 5px;
+}
+.collection-text li label input[type="checkbox"]:checked + span {
+	background-image: url("./shop_images/checkmark.svg");
+	background-position: center;
+	background-size: 15px 15px;
+	border-color: black;
+
+}
+
+
 
 .title-container {
 	display: flex;

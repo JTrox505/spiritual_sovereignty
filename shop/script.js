@@ -18,30 +18,19 @@ document.addEventListener("click", e => {
 
 const COLLECTION_TITLE = document.querySelector(".collection-title");
 const COLLECTION = document.querySelector(".collection-container");
+const FILTER_CONTAINER = document.querySelector(".filter-container");
 
 
 let collectionText = document.querySelector(".collection-text");
-let expanded = document.querySelectorAll("expanded");
-console.log(expanded);
 
 let collectionHeight = COLLECTION.offsetHeight;
 COLLECTION_TITLE.addEventListener("click", () => {
 	
 	COLLECTION_TITLE.classList.toggle("expanded");
+	FILTER_CONTAINER.classList.toggle("expanded");
 
 	if(COLLECTION_TITLE.classList.contains("expanded")) {
-		collectionText.style.maxHeight = `${collectionText.scrollHeight}px`
-	}
-	else {
-		collectionText.style.maxHeight = "0px"; 
-	}
+		return collectionText.style.maxHeight = `${collectionText.scrollHeight}px`
+	}		
+	collectionText.style.maxHeight = "0px"; 
 })
-/*
-COLLECTION.forEach(COLLECTION => {
-	console.log(COLLECTION);
-	COLLECTION.addEventListener("click", () => {
-		COLLECTION.classList.toggle("expanded");
-	})
-
-})
-*/
