@@ -17,20 +17,18 @@ document.addEventListener("click", e => {
 
 
 const COLLECTION_TITLE = document.querySelector(".collection-title");
-const COLLECTION = document.querySelector(".collection-container");
-const FILTER_CONTAINER = document.querySelector(".filter-container");
+const COLLECTION_CONTAINER = document.querySelector(".collection-container");
 
 
-let collectionText = document.querySelector(".collection-text");
+const COLLECTION_TEXT = document.querySelector(".collection-text");
 
-let collectionHeight = COLLECTION.offsetHeight;
+let collectionHeight = COLLECTION_CONTAINER.offsetHeight;
 COLLECTION_TITLE.addEventListener("click", () => {
 	
 	COLLECTION_TITLE.classList.toggle("expanded");
-	FILTER_CONTAINER.classList.toggle("expanded");
 
 	if(COLLECTION_TITLE.classList.contains("expanded")) {
-		return collectionText.style.maxHeight = `${collectionText.scrollHeight}px`
+		return COLLECTION_TEXT.style.maxHeight = `${COLLECTION_TEXT.scrollHeight}px`
 	}		
-	collectionText.style.maxHeight = "0px"; 
+	COLLECTION_TEXT.style.maxHeight = "0px"; 
 })

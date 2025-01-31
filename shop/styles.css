@@ -91,20 +91,20 @@ body {
 	flex-direction: column;
 	margin-right: 48px;
 }
-.filter-container > div {
+.filter {
 	font-size: 14px;
 	font-weight: bold;
 	color: #3a3a3a;
 	border-bottom: 1px solid #e3e3e3;
 	padding: 15px 0;
 }
-.filter-container > div > :first-child::after {
+.filter-title::after {
 	font-family: "FontAwesome";
 	content: "\f107";
 	margin-left: 5px;
 }
 
-.filter-container.expanded > div > :first-child::after {
+.collection-title.expanded::after {
 	content: "\f106";
 }
 
@@ -113,15 +113,21 @@ body {
 	overflow: hidden;
 	max-height: 0;
 }
-.collection-text li {
+.filter-item {
 	list-style-type: none;
 	font-weight: normal;
 	margin-top: 5px;
 }
-.collection-text li label input[type="checkbox"] {
+
+.filter-label {
+	cursor: pointer;
+}
+
+
+.filter-input {
 	display: none;
 }
-.collection-text li label span {
+.filter-span {
 	height: 12px;
 	width: 12px;
 	border: 1px solid grey;
@@ -131,12 +137,16 @@ body {
 	border-radius: 15%;
 	margin-right: 5px;
 }
-.collection-text li label input[type="checkbox"]:checked + span {
+.collection-label:hover > .collection-span {
+	background-color: #e8e8e8;
+}
+
+
+.filter-input:checked + .filter-span {
 	background-image: url("./shop_images/checkmark.svg");
 	background-position: center;
 	background-size: 15px 15px;
 	border-color: black;
-
 }
 
 
