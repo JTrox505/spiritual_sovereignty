@@ -108,7 +108,17 @@ body {
 	content: "\f106";
 }
 
+.color-title.expanded::after {
+	content: "\f106";
+}
+
 .collection-text {
+	transition: all .5s ease;
+	overflow: hidden;
+	max-height: 0;
+}
+
+.color-text {
 	transition: all .5s ease;
 	overflow: hidden;
 	max-height: 0;
