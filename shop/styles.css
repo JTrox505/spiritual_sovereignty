@@ -73,7 +73,7 @@ body {
 .search-button:hover {
 	opacity: 0.5;
 	cursor: pointer;
-	transition: 500ms;
+	transition: opacity 500ms;
 }
 
 
@@ -91,6 +91,10 @@ body {
 	flex-direction: column;
 	margin-right: 48px;
 }
+.filter-title {
+	cursor: pointer;
+}
+
 .filter {
 	font-size: 14px;
 	font-weight: bold;
@@ -113,13 +117,13 @@ body {
 }
 
 .collection-text {
-	transition: all .5s ease;
+	transition: max-height 500ms ease;
 	overflow: hidden;
 	max-height: 0;
 }
 
 .color-text {
-	transition: all .5s ease;
+	transition: max-height 500ms ease;
 	overflow: hidden;
 	max-height: 0;
 }
@@ -147,8 +151,8 @@ body {
 	border-radius: 15%;
 	margin-right: 5px;
 }
-.collection-label:hover > .collection-span {
-	background-color: #e8e8e8;
+.filter-label:hover > .filter-span {
+	background-color: #e1e1e1;
 }
 
 
@@ -230,6 +234,6 @@ body {
 }
 .sort-content li:hover {
 	background: #e8e8e8;
-	transition: 300ms;
+	transition: background 100ms ease-out;
 	cursor: pointer;
 }
