@@ -1,3 +1,7 @@
+window.addEventListener("load", () => {
+	setRangeSlider();
+})
+
 document.addEventListener("click", e => {
 	const isDropdownButton = e.target.matches("[data-dropdown-button]");
 	if(!isDropdownButton && e.target.closest('[data-dropdown]')!= null) return;
@@ -45,3 +49,36 @@ document.addEventListener("click", e => {
 		}
 	})
 })
+
+const MIN_PRICE_RANGE = document.getElementById("min-price-range");
+const MAX_PRICE_RANGE = document.getElementById("max-price-range");
+const MIN_PRICE = document.getElementById("min-price");
+const MAX_PRICE = document.getElementById("max-price");
+const PRICE_RANGE_SLIDER_TRACK = document.getElementById("price-range-slider-track");
+
+function setPriceRange(price, priceSlider, oppositeSlider) {
+	let gap = parseInt(MAX_PRICE_RANGE.value) - parseInt(MIN_PRICE_RANGE.value);
+	if(gap <= 0) {
+		priceSlider.value = parseInt(oppositeSlider.value);
+	}
+	price.innerHTML = `$${priceSlider.value}`;
+}
+
+function setRangeSlider() {
+	PRICE_RANGE_SLIDER_TRACK.style.left = `${MIN_PRICE_RANGE.value / MAX_PRICE_RANGE.max * 100}%`;
+	PRICE_RANGE_SLIDER_TRACK.style.right = `${100 - MAX_PRICE_RANGE.value / MAX_PRICE_RANGE.max * 100}%`;
+}
+
+MIN_PRICE_RANGE.addEventListener("input", () => {
+	setPriceRange(MIN_PRICE, MIN_PRICE_RANGE, MAX_PRICE_RANGE);
+	setRangeSlider();
+})
+
+MAX_PRICE_RANGE.addEventListener("input", () => {
+	setPriceRange(MAX_PRICE, MAX_PRICE_RANGE, MIN_PRICE_RANGE);
+	setRangeSlider();
+})
+
+
+
+
