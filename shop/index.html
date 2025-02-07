@@ -38,7 +38,7 @@
 			<div class="filter-container"> 
 				<div class="collection-container filter" data-filter-dropdown>
 					<div class="collection-title filter-title" data-filter-dropdown-button>COLLECTION</div>
-					<div class="collection-text filter-text">
+					<div class="filter-text">
 						<li class="filter-item">
 							<label for="aquamarine" class="filter-label">
 								<input type="checkbox" id="aquamarine" class="filter-input">
@@ -65,16 +65,16 @@
 				</div>
 
 				<div class="price-container filter" data-filter-dropdown>
-					<div class="filter-title" data-filter-dropdown-button>PRICE</div>
+					<div class="filter-title price-title" data-filter-dropdown-button>PRICE</div>
 					<div class="filter-text">
 						<li class="filter-item price-grid-container">
-							<span id="min-price">$0</span>
-							<span id="max-price">$1000</span>
+							<span id="min-price-value">$0</span>
+							<span id="max-price-value">$1000</span>
 							
-							<div class="range-container">
-								<span id="price-range-slider-track"></span>
-								<input type="range" name="min-val"min="0" max="1000" value="0" step="10" id="min-price-range" class="filter-price">  
-								<input type="range" name="max-val" min="0" max="1000" value="1000" step="10" id="max-price-range" class="filter-price"> 
+							<div id="track-container">
+								<span id="slider-track"></span>
+								<input type="range" name="min-val"min="0" max="1000" value="0" step="10" id="min-slider" class="price-range-slider">  
+								<input type="range" name="max-val" min="0" max="1000" value="1000" step="10" id="max-slider" class="price-range-slider"> 
 							</div>
 						</li>
 					</div>
@@ -82,7 +82,7 @@
 
 				<div class="color-container filter" data-filter-dropdown>
 					<div class="filter-title color-title" data-filter-dropdown-button>COLOR</div>
-					<div class="color-text filter-text">
+					<div class="filter-text">
 						<li class="filter-item">
 							<label for="black" class="filter-label">
 								<input type="checkbox" id="black" class="filter-input">
@@ -115,8 +115,8 @@
 				</div>
 
 				<div class="shape-container filter" data-filter-dropdown>
-					<div class="filter-title shape-title" data-filter-dropdown-button>SHAPE</div>
-					<div class="shape-text filter-text">
+					<div class="shape-title filter-title" data-filter-dropdown-button>SHAPE</div>
+					<div class="filter-text">
 						<li class="filter-item">
 							<label for="ring" class="filter-label">
 								<input type="checkbox" id="ring" class="filter-input">
