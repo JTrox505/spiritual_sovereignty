@@ -2,7 +2,8 @@ window.addEventListener("load", () => {
 	setRangeSlider();
 })
 
-document.addEventListener("click", e => {
+const SORT_CONTAINER = document.querySelector(".sort-container");
+SORT_CONTAINER.addEventListener("click", e => {
 	const isDropdownButton = e.target.matches("[data-dropdown-button]");
 	if(!isDropdownButton && e.target.closest('[data-dropdown]')!= null) return;
 
@@ -20,7 +21,8 @@ document.addEventListener("click", e => {
 })
 
 
-document.addEventListener("click", e => {
+const FILTER_CONTAINER = document.querySelector(".filter-container");
+FILTER_CONTAINER.addEventListener("click", e => {
 	const isFilterDropdown = e.target.matches("[data-filter-dropdown-button]");
 	if(!isFilterDropdown && e.target.closest("[data-filter-dropdown]") !=null) return;
 
@@ -50,6 +52,27 @@ document.addEventListener("click", e => {
 	})
 })
 
+const FILTER_DISPLAY_TEXT = document.querySelector(".filter-display-text");
+
+FILTER_CONTAINER.addEventListener("change", e => {
+
+	if(e.target.matches("[data-price-slider]")) {
+		return;
+	}
+	if(e.target.checked) {
+		let filter = document.createElement("li");
+		let filterItem = e.target.id;
+		filter.classList.add("filter-item");
+		filter.id = `${e.target.id}_active_filter`;
+		filter.textContent = e.target.id;
+		FILTER_DISPLAY_TEXT.appendChild(filter);
+		return;
+	}
+	document.getElementById(`${e.target.id}_active_filter`).remove();
+})
+
+
+
 const MIN_PRICE_VALUE = document.getElementById("min-price-value");
 const MAX_PRICE_VALUE= document.getElementById("max-price-value");
 const MIN_SLIDER = document.getElementById("min-slider");
@@ -61,7 +84,7 @@ function setPriceRange(price, priceSlider, sliderLimit) {
 	if(rangeGap <= 0) {
 		priceSlider.value = parseInt(sliderLimit.value);
 	}
-	price.innerHTML = `$${priceSlider.value}`;
+	price.textContent = `$${priceSlider.value}`;
 
 	setRangeSlider();
 }
