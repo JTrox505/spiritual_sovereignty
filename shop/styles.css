@@ -110,6 +110,37 @@ body {
 	margin-left: 5px;
 }
 
+.filter-display-text {
+	margin-left: 5px;
+	width: 90%;
+	position: relative;
+	margin-top: 5px;
+}
+
+.filter-display-item {
+	padding-bottom: 2px;
+	border-bottom: 1px solid transparent;
+	margin-bottom: 3px;
+	list-style-type: none;
+	font-weight: normal;
+}
+.filter-display-item::after {
+	content: "x";
+	font-size: 18px;
+	position: absolute;
+	left: 95%;
+}
+.filter-display-item:hover {
+	border-bottom: 1px solid black;
+	cursor: pointer;
+	transition: border 150ms ease-out;
+}
+
+.filter-item-x {
+	justify-self: end;
+	margin-right: 15px;
+}
+
 .collection-title.expanded::after,
 .price-title.expanded::after,
 .color-title.expanded::after,

@@ -53,6 +53,7 @@ FILTER_CONTAINER.addEventListener("click", e => {
 })
 
 const FILTER_DISPLAY_TEXT = document.querySelector(".filter-display-text");
+const FILTER_DISPLAY_X = document.querySelector(".filter-display-x");
 
 FILTER_CONTAINER.addEventListener("change", e => {
 
@@ -61,17 +62,27 @@ FILTER_CONTAINER.addEventListener("change", e => {
 	}
 	if(e.target.checked) {
 		let filter = document.createElement("li");
-		let filterItem = e.target.id;
-		filter.classList.add("filter-item");
-		filter.id = `${e.target.id}_active_filter`;
+		filter.classList.add("filter-display-item");
+		filter.id = `${e.target.id}-active-filter`;
+		filter.setAttribute("data-active-filter", "");
+		//let filterX = JSON.parse(JSON.stringify(filter));
 		filter.textContent = e.target.id;
 		FILTER_DISPLAY_TEXT.appendChild(filter);
 		return;
 	}
-	document.getElementById(`${e.target.id}_active_filter`).remove();
+	document.getElementById(`${e.target.id}-active-filter`).remove();
 })
 
 
+const FILTER_DISPLAY_TEXT_CONTAINER = document.querySelector(".filter-display-text-container");
+
+FILTER_DISPLAY_TEXT_CONTAINER.addEventListener("click", e => {
+	const isActiveFilter = e.target.matches("[data-active-filter]");
+	if(isActiveFilter) {
+		document.getElementById(e.target.textContent).checked = false;
+		document.getElementById(e.target.id).remove();
+	}
+})
 
 const MIN_PRICE_VALUE = document.getElementById("min-price-value");
 const MAX_PRICE_VALUE= document.getElementById("max-price-value");
