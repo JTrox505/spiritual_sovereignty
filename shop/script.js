@@ -53,7 +53,6 @@ FILTER_CONTAINER.addEventListener("click", e => {
 })
 
 const FILTER_DISPLAY_TEXT = document.querySelector(".filter-display-text");
-const FILTER_DISPLAY_X = document.querySelector(".filter-display-x");
 
 FILTER_CONTAINER.addEventListener("change", e => {
 
@@ -65,7 +64,6 @@ FILTER_CONTAINER.addEventListener("change", e => {
 		filter.classList.add("filter-display-item");
 		filter.id = `${e.target.id}-active-filter`;
 		filter.setAttribute("data-active-filter", "");
-		//let filterX = JSON.parse(JSON.stringify(filter));
 		filter.textContent = e.target.id;
 		FILTER_DISPLAY_TEXT.appendChild(filter);
 		return;

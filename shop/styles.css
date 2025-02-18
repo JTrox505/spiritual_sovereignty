@@ -105,9 +105,9 @@ body {
 	cursor: pointer;
 }
 .filter-title::after {
-	font-family: "FontAwesome";
 	content: "\f107";
 	margin-left: 5px;
+	font-family: "fontAwesome";
 }
 
 .filter-display-text {
@@ -119,11 +119,15 @@ body {
 
 .filter-display-item {
 	padding-bottom: 2px;
-	border-bottom: 1px solid transparent;
 	margin-bottom: 3px;
 	list-style-type: none;
 	font-weight: normal;
 }
+
+.filter-display-item::first-letter {
+	text-transform: capitalize;
+}
+
 .filter-display-item::after {
 	content: "x";
 	font-size: 18px;
@@ -131,15 +135,11 @@ body {
 	left: 95%;
 }
 .filter-display-item:hover {
-	border-bottom: 1px solid black;
 	cursor: pointer;
-	transition: border 150ms ease-out;
+	transition: font-weight 200ms ease-out;
+	font-weight: 600;
 }
 
-.filter-item-x {
-	justify-self: end;
-	margin-right: 15px;
-}
 
 .collection-title.expanded::after,
 .price-title.expanded::after,
