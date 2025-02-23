@@ -54,23 +54,72 @@ FILTER_CONTAINER.addEventListener("click", e => {
 
 const FILTER_DISPLAY_TEXT = document.querySelector(".filter-display-text");
 
+function displayActiveFilter(e) {
+	let filter = document.createElement("li");
+	filter.classList.add("filter-display-item");
+	filter.id = `${e.target.id}-active-filter`;
+	filter.setAttribute("data-active-filter", "");
+	filter.textContent = e.target.id;
+	FILTER_DISPLAY_TEXT.appendChild(filter);
+	return;
+	
+}
+
+function isPriceRangeFilter() {
+	if(MIN_SLIDER.value === "0" && MAX_SLIDER.value === "1000") {
+		try {
+			document.getElementById("price-range-active-filter").remove();
+		}
+		catch(TypeError) {
+			return true;
+		}
+	}
+
+}
+function displayPriceRangeFilter(e, filter) {
+	currentMin = e.target.closest("[data-min-slider]");
+	currentMax = e.target.closest("[data-max-slider]");
+	if(currentMin === null) {
+		return filter.textContent = (`$${currentMax.previousElementSibling.value}-$${e.target.value}`);
+
+	}
+	return filter.textContent = (`$${e.target.value}-$${currentMin.nextElementSibling.value}`)
+}
+
+
 FILTER_CONTAINER.addEventListener("change", e => {
 
 	if(e.target.matches("[data-price-slider]")) {
-		return;
-	}
-	if(e.target.checked) {
+		const existingFilter = document.getElementById("price-range-active-filter")
+		if(existingFilter) {
+			return displayPriceRangeFilter(e, existingFilter);
+		}
+
 		let filter = document.createElement("li");
 		filter.classList.add("filter-display-item");
-		filter.id = `${e.target.id}-active-filter`;
-		filter.setAttribute("data-active-filter", "");
-		filter.textContent = e.target.id;
+		filter.id = "price-range-active-filter";
+		filter.setAttribute("data-price-range-filter", "");
+		displayPriceRangeFilter(e, filter);
+		let stop = isPriceRangeFilter();
+		if(stop) {
+			return;
+		}
 		FILTER_DISPLAY_TEXT.appendChild(filter);
+		return;	
+	}
+	if(e.target.checked) {
+		displayActiveFilter(e);
 		return;
 	}
 	document.getElementById(`${e.target.id}-active-filter`).remove();
 })
 
+
+const MIN_PRICE_VALUE = document.getElementById("min-price-value");
+const MAX_PRICE_VALUE= document.getElementById("max-price-value");
+const MIN_SLIDER = document.getElementById("min-slider");
+const MAX_SLIDER = document.getElementById("max-slider");
+const SLIDER_TRACK = document.getElementById("slider-track");
 
 const FILTER_DISPLAY_TEXT_CONTAINER = document.querySelector(".filter-display-text-container");
 
@@ -80,13 +129,17 @@ FILTER_DISPLAY_TEXT_CONTAINER.addEventListener("click", e => {
 		document.getElementById(e.target.textContent).checked = false;
 		document.getElementById(e.target.id).remove();
 	}
+	const isPriceRangeFilter = e.target.matches("[data-price-range-filter]");
+	if(isPriceRangeFilter) {
+		MIN_SLIDER.value = 0;
+		MAX_SLIDER.value = 1000;
+		SLIDER_TRACK.style.left = 0;
+		SLIDER_TRACK.style.right = 0;
+		MIN_PRICE_VALUE.textContent = 0;
+		MAX_PRICE_VALUE.textContent = 1000;
+		document.getElementById(e.target.id).remove();
+	}
 })
-
-const MIN_PRICE_VALUE = document.getElementById("min-price-value");
-const MAX_PRICE_VALUE= document.getElementById("max-price-value");
-const MIN_SLIDER = document.getElementById("min-slider");
-const MAX_SLIDER = document.getElementById("max-slider");
-const SLIDER_TRACK = document.getElementById("slider-track");
 
 function setPriceRange(price, priceSlider, sliderLimit) {
 	let rangeGap = parseInt(MAX_SLIDER.value) - parseInt(MIN_SLIDER.value);
@@ -96,6 +149,7 @@ function setPriceRange(price, priceSlider, sliderLimit) {
 	price.textContent = `$${priceSlider.value}`;
 
 	setRangeSlider();
+	isPriceRangeFilter();
 }
 
 function setRangeSlider() {
