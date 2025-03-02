@@ -123,11 +123,9 @@ body {
 	list-style-type: none;
 	font-weight: normal;
 }
-
 .filter-display-item::first-letter {
 	text-transform: capitalize;
 }
-
 .filter-display-item::after {
 	content: "x";
 	font-size: 18px;
