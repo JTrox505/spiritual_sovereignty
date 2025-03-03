@@ -41,6 +41,7 @@ FILTER_CONTAINER.addEventListener("click", e => {
 const isPriceRangeFilter = () => {
 	if(MIN_SLIDER.value === "0" && MAX_SLIDER.value === "1000") {
 		try {
+			removeClearAllButton("price-range-active-filter");
 			document.getElementById("price-range-active-filter").remove();
 		}
 		catch(TypeError) {
@@ -62,6 +63,20 @@ const displayPriceRangeFilter = (e, filter) => {
 	}
 	return filter.textContent = (`$${e.target.value}-$${currentMin.nextElementSibling.value}`)
 }
+
+let activeFilters = new Set();
+const displayClearAllButton = (activeFilter => {
+	activeFilters.add(activeFilter);
+	const FILTER_DISPLAY_CLEAR_ALL_BUTTON = document.querySelector(".filter-display-clear-all-button");
+	FILTER_DISPLAY_CLEAR_ALL_BUTTON.classList.add("active");
+})
+
+const removeClearAllButton = (activeFilter => {
+	activeFilters.delete(activeFilter);
+	if(activeFilters.size === 0) {
+		document.querySelector(".filter-display-clear-all-button").classList.remove("active");
+	}
+})
 
 
 
@@ -86,6 +101,7 @@ FILTER_CONTAINER.addEventListener("change", e => {
 			return;
 		}
 		FILTER_DISPLAY_TEXT.appendChild(filter);
+		displayClearAllButton("price-range-active-filter");
 		return;	
 	}
 	//Since all of the other filters are checkboxes instead of ranges. 
@@ -96,8 +112,11 @@ FILTER_CONTAINER.addEventListener("change", e => {
 		filter.setAttribute("data-checkbox-active-filter", "");
 		filter.textContent = e.target.id;
 		FILTER_DISPLAY_TEXT.appendChild(filter);
+		displayClearAllButton(`${e.target.id}-active-checkbox-filter`);
 		return;
 	}
+
+	removeClearAllButton(`${e.target.id}-active-checkbox-filter`);
 	document.getElementById(`${e.target.id}-active-checkbox-filter`).remove();
 })
 
@@ -111,10 +130,12 @@ const SLIDER_TRACK = document.getElementById("slider-track");
 
 
 //active filter removal function. 
-const FILTER_DISPLAY_TEXT_CONTAINER = document.querySelector(".filter-display-text-container");
-FILTER_DISPLAY_TEXT_CONTAINER.addEventListener("click", e => {
+const FILTER_DISPLAY_CONTAINER = document.querySelector(".filter-display-container");
+FILTER_DISPLAY_CONTAINER.addEventListener("click", e => {
 	const isCheckboxActiveFilter = e.target.matches("[data-checkbox-active-filter]");
 	if(isCheckboxActiveFilter) {
+		removeClearAllButton(e.target.id);
+		console.log(e.target);
 		document.getElementById(e.target.textContent).checked = false;
 		document.getElementById(e.target.id).remove();
 	}
@@ -127,7 +148,31 @@ FILTER_DISPLAY_TEXT_CONTAINER.addEventListener("click", e => {
 		SLIDER_TRACK.style.right = 0;
 		MIN_PRICE_VALUE.textContent = 0;
 		MAX_PRICE_VALUE.textContent = 1000;
+		removeClearAllButton(e.target.id);
 		document.getElementById(e.target.id).remove();
+	}
+	const isClearAllButton = e.target.matches("[data-clear-all-button]");
+	if(isClearAllButton) {
+		activeFilters.forEach(filter => {
+			//need to repeat this code to reset the price range. I could've made it into a function but I didn't think it was that big of a deal. 
+			if(filter ==="price-range-active-filter") {
+				MIN_SLIDER.value = 0;
+				MAX_SLIDER.value = 1000;
+				SLIDER_TRACK.style.left = 0;
+				SLIDER_TRACK.style.right = 0;
+				MIN_PRICE_VALUE.textContent = 0;
+				MAX_PRICE_VALUE.textContent = 1000;
+				removeClearAllButton(filter);
+				document.getElementById(filter).remove();
+				return;
+			}
+			// clear all function for the checkbox filters. the filter element is so that when I check for the textContent it's looking for the content of an element and not a string. 
+			let filterElement = document.getElementById(filter);
+			document.getElementById(filterElement.textContent).checked = false;
+			document.getElementById(filter).remove();
+			removeClearAllButton(filter);
+			
+		})
 	}
 })
 

@@ -110,6 +110,33 @@ body {
 	font-family: "fontAwesome";
 }
 
+.filter-display-title-container {
+	display: flex;
+}
+
+.filter-display-title {
+	flex: 1 1 0%;
+}
+
+.filter-display-clear-all-button {
+	text-align: end;
+	font-weight: normal;
+	margin-right: 10px;
+	border-bottom: 1px solid transparent;
+	opacity: 0%;
+	pointer-events: none;
+}
+.filter-display-clear-all-button.active {
+	pointer-events: auto;
+	opacity: 100%;
+}
+
+.filter-display-clear-all-button:hover {
+	border-bottom: 1px solid black;
+	cursor: pointer;
+	color: black;
+}
+
 .filter-display-text {
 	margin-left: 5px;
 	width: 90%;
