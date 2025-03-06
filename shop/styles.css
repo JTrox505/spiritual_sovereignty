@@ -311,6 +311,8 @@ body {
 	font-size: inherit;
 	cursor: pointer;
 	padding: 0;
+	width: 160px;
+	text-align: start;
 }
 .sort-button::after {
 	font-family: "FontAwesome";

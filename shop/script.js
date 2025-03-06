@@ -210,8 +210,10 @@ MAX_SLIDER.addEventListener("input", () => {
 
 //I need this to be a document event listener so that the dropdown will collapse if there is a click anywhere else on the page. 
 document.addEventListener("click", e => {
+
+
 	const isDropdownButton = e.target.matches("[data-dropdown-button]");
-	if(!isDropdownButton && e.target.closest('[data-dropdown]')!= null) return;
+	if(!isDropdownButton && (e.target.closest('[data-dropdown]')!= null)) return;
 
 
 	let currentDropdown;
@@ -223,9 +225,19 @@ document.addEventListener("click", e => {
 	document.querySelectorAll("[data-dropdown].active").forEach(dropdown => {
 		if(dropdown === currentDropdown) return;
 		dropdown.classList.remove("active");
-	
 	})
 })
 
-
-
+//figured this was easier than adding this function to the document.addEventListener above since I can't access the SORT_BY_CONTAINER through a data value when I'm clicking on a sortByItem anyways. 
+const SORT_BY_CONTAINER = document.querySelector(".sort-by-container");
+SORT_BY_CONTAINER.addEventListener("click", e => {
+	const isSortByItem = e.target.matches("[data-sort-by-item]");
+	if(isSortByItem) {
+		//have to put the content in a variable because if I try to change the e.target based off the new current sort by after already changing the current sort by both will be the same name. 
+		let currentSortBy = SORT_BY_CONTAINER.children[0];
+		let currentSortByContent = SORT_BY_CONTAINER.children[0].textContent;
+		currentSortBy.textContent = e.target.textContent;
+		e.target.textContent = currentSortByContent;
+		SORT_BY_CONTAINER.classList.remove("active");
+	}
+})
