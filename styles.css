@@ -177,6 +177,34 @@ body {
 	display: flex;
 	height: 500px;
 	transition: 800ms;
+	position: relative;
+}
+.intention-container.confidence {
+	background-color: #fffee7;
+}
+.intention-container.energy {
+	background-color: #fff6e5;
+}
+.intention-container.balance {
+	background-color: #e6eafd;
+}
+.intention-container.intuition {
+	background-color: #f1eaf6;
+}
+.intention-container.love {
+	background-color: #fdf3fb;
+}
+.intention-container.manifestation {
+	background-color: #e6f7e6;
+}
+.intention-container.peace {
+	background-color: #e5f8ff;
+}
+.intention-container.pregnancy {
+	background-color: #fee5e4;
+}
+.intention-container.protection {
+	background-color: #f5efea;
 }
 
 .left-side-intention-container {
@@ -197,6 +225,76 @@ body {
 	flex-direction: column;
 	align-items: start;
 }
+.intention-info-container.confidence {
+	background-color: #fbfbf4;
+}
+.intention-info-container.energy {
+	background-color: #fbf8f3;
+}
+.intention-info-container.balance {
+	background-color: #f4f5fa;
+}
+.intention-info-container.intuition {
+	background-color: #f7f5f8;
+}
+.intention-info-container.love {
+	background-color: #faf7fa;
+}
+.intention-info-container.manifestation {
+	background-color: #f4f9f4;
+}
+.intention-info-container.peace {
+	background-color: #f3f9fb;
+}
+.intention-info-container.pregnancy {
+	background-color: #fbf3f3;
+}
+.intention-info-container.protection {
+	background-color: #f8f6f5;
+}
+
+
+
+.confidence-intention-type.active,
+.energy-intention-type.active,
+.balance-intention-type.active,
+.intuition-intention-type.active,
+.love-intention-type.active,
+.manifestation-intention-type.active,
+.peace-intention-type.active,
+.pregnancy-intention-type.active,
+.protection-intention-type.active,
+.confidence-intention-description.active,
+.energy-intention-description.active,
+.balance-intention-description.active,
+.intuition-intention-description.active,
+.love-intention-description.active,
+.manifestation-intention-description.active,
+.peace-intention-description.active,
+.pregnancy-intention-description.active,
+.protection-intention-description.active,
+.confidence-intention-shop.active,
+.energy-intention-shop.active,
+.balance-intention-shop.active,
+.intuition-intention-shop.active,
+.love-intention-shop.active,
+.manifestation-intention-shop.active,
+.peace-intention-shop.active,
+.pregnancy-intention-shop.active,
+.protection-intention-shop.active,
+.confidence-intention-image.active,
+.energy-intention-image.active,
+.balance-intention-image.active,
+.intuition-intention-image.active,
+.love-intention-image.active,
+.manifestation-intention-image.active,
+.peace-intention-image.active,
+.pregnancy-intention-image.active,
+.protection-intention-image.active {
+	opacity: 100%;
+}
+
+
 
 .intention-type-container {
 	flex: 0.5 1 0%;
@@ -257,13 +355,39 @@ body {
 	grid-column-start: 1;
 	opacity: 0;
 }
+.intention-image-container.confidence {
+	background-color: #fef7a3;
+}
+.intention-image-container.energy {
+	background-color: #fedc98;
+}
+.intention-image-container.balance {
+	background-color: #99abf2;
+}
+.intention-image-container.intuition {
+	background-color: #c4aad7;
+}
+.intention-image-container.love {
+	background-color: #f8ccef;
+}
+.intention-image-container.manifestation {
+	background-color: #9bdd99;
+}
+.intention-image-container.peace {
+	background-color: #95e5ff;
+}
+.intention-image-container.pregnancy {
+	background-color: #ff9795;
+}
+.intention-image-container.protection {
+	background-color: #d1c0aa;
+}
 
 .left-arrow-container {
 	display: inline-block;
 	position: absolute;
-	margin-top: 250px;
-	left: 1rem;
-	margin-left: 1%;
+	top: 50%;
+	left: 2rem;
 	width: 45px;
 	height: 45px;
 	display: flex;
@@ -292,9 +416,8 @@ body {
 .right-arrow-container {
 	display: inline-block;
 	position: absolute;
-	margin-top: 250px;
-	right: 1rem;
-	margin-right: 1%;
+	top: 50%;
+	right: 2rem;
 	width: 45px;
 	height: 45px;
 	display: flex;
